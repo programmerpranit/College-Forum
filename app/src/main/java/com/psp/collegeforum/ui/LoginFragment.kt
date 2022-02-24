@@ -19,6 +19,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_login,container,false)
 
+        // TODO: Just use onCreate for databinding all other views manipulation will go in onViewCreated
+
         view.btnLogin.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_userDetailsFragment)
         }
