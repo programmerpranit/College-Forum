@@ -3,6 +3,6 @@
 Made By :
 
 Pranit Patil
-Srvesh Rane
-Prathmesh Karambelkar
-Prem Shiravle
+Sarvesh Rane
+Prathamesh Karambelkar
+Prem Shiravale
