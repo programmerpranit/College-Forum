@@ -7,7 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.UserDetailsFragment">
-<!--This is the layout which will be shown when the user login's for the FIRST TIME #SR -->
+
+<!--This is the layout which will be shown when the user
+login's for the FIRST TIME (If no sign in with google) #SR-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

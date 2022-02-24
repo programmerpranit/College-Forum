@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <!-- THIS IS THE MAIN FRAG ACTIVITY #SR -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,35 +22,49 @@
 
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabSearchQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/imgBtnProfile"
+            android:layout_width="48dp"
+            android:layout_height="41dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintBottom_toTopOf="@+id/rvInMainFrag"
+            app:layout_constraintEnd_toStartOf="@+id/tv"
+            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/imgBtnSearchQuestion"
+            android:layout_width="61dp"
+            android:layout_height="55dp"
             android:clickable="true"
             android:src="@drawable/ic_search"
-            app:backgroundTint="#DAA8A4"
+            app:backgroundTint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.997"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tv"
-            android:layout_width="174dp"
+            android:layout_width="wrap_content"
             android:layout_height="47dp"
-            android:text=" Sarvesh "
-            android:textSize="20sp"
-
+            android:text="Sarvesh "
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.182"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.008" />
+            app:layout_constraintVertical_bias="0.009" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvInMainFrag"
             android:layout_width="409dp"
             android:layout_height="808dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_question"/>
+            tools:listitem="@layout/item_question" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddQuestion"
