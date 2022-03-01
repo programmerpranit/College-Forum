@@ -1,21 +1,34 @@
-package com.psp.collegeforum
+package com.psp.collegeforum.core
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import com.psp.collegeforum.R
+import com.psp.collegeforum.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    //TODO: Change To View Binding
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //Setcolor()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        navController = navHostFragment.navController
+
     }
 
     //TODO: Add this function in view model
     //FUNCTION TO CHANGE COLOUR OF TEXT OF USER
-    /*
+    /**
     fun Setcolor(){
         var x =3
         when (x) {

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.psp.collegeforum.ui.LoginFragment"
+        android:name="com.psp.collegeforum.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -21,12 +21,12 @@
     </fragment>
     <fragment
         android:id="@+id/addQuestion"
-        android:name="com.psp.collegeforum.ui.AddQuestion"
+        android:name="com.psp.collegeforum.ui.fragments.AddQuestion"
         android:label="fragment_add_question"
         tools:layout="@layout/fragment_add_question" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.psp.collegeforum.ui.MainFragment"
+        android:name="com.psp.collegeforum.ui.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -44,12 +44,12 @@
     </fragment>
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.psp.collegeforum.ui.QuestionFragment"
+        android:name="com.psp.collegeforum.ui.fragments.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.psp.collegeforum.ui.SearchFragment"
+        android:name="com.psp.collegeforum.ui.fragments.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
-        android:name="com.psp.collegeforum.ui.UserDetailsFragment"
+        android:name="com.psp.collegeforum.ui.fragments.UserDetailsFragment"
         android:label="fragment_user_details"
         tools:layout="@layout/fragment_user_details" >
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="com.psp.collegeforum.ui.UserProfileFragment"
+        android:name="com.psp.collegeforum.ui.fragments.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
