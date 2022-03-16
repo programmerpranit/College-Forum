@@ -25,7 +25,7 @@ class AppModule {
     @Provides
     fun provideSharedPreference(
         @ApplicationContext app: Context
-    ) = app.getSharedPreferences(USER_SHARED_PREFERENCE, Context.MODE_PRIVATE)
+    ): SharedPreferences = app.getSharedPreferences(USER_SHARED_PREFERENCE, Context.MODE_PRIVATE)
 
     // to get the jwt key that we stored inside shared pref
     @Singleton

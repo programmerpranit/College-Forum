@@ -8,6 +8,4 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModels @Inject constructor(
     private val repository: MainRepo
-) : ViewModel() {
-
-}
+) : ViewModel()

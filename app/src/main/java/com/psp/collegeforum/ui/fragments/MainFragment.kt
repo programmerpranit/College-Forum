@@ -6,20 +6,46 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.psp.collegeforum.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.psp.collegeforum.databinding.FragmentMainBinding
+import com.psp.collegeforum.ui.adapters.QuestionsAdapter
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment() {
 
     private val viewmodel: MainViewModel by activityViewModels()
+    private lateinit var binding: FragmentMainBinding
+    private lateinit var adapter: QuestionsAdapter
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tv.text = "Pranit"
+
+        viewmodel.getQuestions()
+
+        adapter = QuestionsAdapter()
+
+        viewmodel.question.observe(viewLifecycleOwner) { list ->
+            adapter.submitList(list)
+        }
+
+        val recyclerView = binding.rvInMainFrag
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        recyclerView.adapter = adapter
 
     }
+
 
 }
