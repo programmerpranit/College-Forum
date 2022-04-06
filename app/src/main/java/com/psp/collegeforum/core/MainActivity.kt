@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         navController = navHostFragment.navController
 
+
+
+
     }
 
     //TODO: Add this function in view model
