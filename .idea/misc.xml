@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/College-Forum/app/src/main/res/layout/activity_main.xml" value="0.11851851851851852" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_add_question.xml" value="0.264" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_login.xml" value="0.1634963768115942" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_main.xml" value="0.2" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_question.xml" value="0.4" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_search.xml" value="0.1634963768115942" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_user_details.xml" value="0.264" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_user_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/item_answers.xml" value="0.4" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/item_question.xml" value="0.4" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/item_search_question.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/PRANIT/AndroidStudioProjects/CollegeForum/app/src/main/res/layout/activity_main.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/PRANIT/AndroidStudioProjects/CollegeForum/app/src/main/res/layout/fragment_add_question.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/PRANIT/AndroidStudioProjects/CollegeForum/app/src/main/res/layout/fragment_search.xml" value="0.2526041666666667" />

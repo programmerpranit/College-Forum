@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.psp.collegeforum.R
 import com.psp.collegeforum.databinding.FragmentMainBinding
 import com.psp.collegeforum.ui.adapters.QuestionsAdapter
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_main.view.*
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -31,8 +34,22 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tv.text = "Pranit"
+        // Navigation and buttons to other fragments
+        // Add question btn
+        view.fabAddQuestion.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addQuestion)
+        }
+        // Search btn
+        view.imgBtnSearchQuestion.setOnClickListener {
+          Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_searchFragment)
+        }
+         //Profile btn
+        view.imgBtnProfile.setOnClickListener {
+         Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_userProfileFragment)
+        }
 
+
+        binding.tv.text = "Pranit"
         viewmodel.getQuestions()
 
         adapter = QuestionsAdapter()
@@ -46,6 +63,4 @@ class MainFragment : Fragment() {
         recyclerView.adapter = adapter
 
     }
-
-
 }

@@ -10,7 +10,7 @@ interface BackendApi {
 //    suspend fun authUser(
 //        @Field("idToken") idToken: String
 //    ) : Response<DataClass>
-    @GET("/todos")
+    @GET("/forum/questions")
     suspend fun getQuestions(): ArrayList<Question>
 
 

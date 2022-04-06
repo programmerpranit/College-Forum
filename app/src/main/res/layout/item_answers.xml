@@ -37,8 +37,8 @@
 
         <TextView
             android:id="@+id/tvBtnUsefull"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="38dp"
+            android:layout_height="52dp"
             android:clickable="true"
             android:paddingBottom="10dp"
             android:text="👍"
@@ -47,21 +47,53 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnswerInQuestionFrag" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswerInQuestionFrag"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvUpVote"
+            android:layout_width="34dp"
+            android:layout_height="52dp"
+            android:clickable="true"
+            android:paddingBottom="10dp"
+            android:text="10"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswerInQuestionFrag"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvBtnNotUsefull"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="37dp"
+            android:layout_height="51dp"
             android:clickable="true"
             android:paddingBottom="10dp"
             android:text="👎"
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintHorizontal_bias="0.29"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAnswerInQuestionFrag" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswerInQuestionFrag"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvDownVote"
+            android:layout_width="25dp"
+            android:layout_height="52dp"
+            android:clickable="true"
+            android:paddingBottom="10dp"
+            android:text="5"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswerInQuestionFrag"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
