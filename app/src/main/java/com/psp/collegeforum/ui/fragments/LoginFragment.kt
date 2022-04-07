@@ -21,11 +21,17 @@ import com.psp.collegeforum.databinding.FragmentLoginBinding
 import com.psp.collegeforum.ui.viewmodels.AuthViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewmodel: AuthViewModels by activityViewModels()
+
+//    @Inject
+//    private lateinit var jwtKey:String
+
+    val jwtKey = ""
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -34,8 +40,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val TAG = "LoginActivity"
     private val RC_SIGN_IN = 11
 
-    private val clientId =
-        "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
+//    private val clientId =
+//        "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
+
+
+    private val clientId = "855467182800-rr0bmt0cjd1i2cf1chq0ohc0ts7h1k9v.apps.googleusercontent.com"
+//
+//    client secerate = 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
 
 
 
@@ -51,6 +62,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(jwtKey != ""){
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment)
+        }
+        
 
         view.btnLogin.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment)
@@ -124,6 +140,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 //            finish()
 
         }
+        Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_mainFragment)
     }
 
     override fun onDestroyView() {
