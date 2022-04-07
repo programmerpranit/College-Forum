@@ -30,7 +30,7 @@
 
 
     <TextView
-        android:id="@+id/etQuestionInMRV"
+        android:id="@+id/tvQuestionInMRV"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:maxLines="2"
@@ -62,8 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="4"
-            android:text="Lambda Expression is the new feature of Java 8 and replacement of anonymous inner class to implement the interface method.
-Lambda expression provides implementation of functional interface. An interface which has only one abstract method."
+            android:text="ANSWER"
             android:textSize="18sp"
             android:textStyle="normal" />
 
@@ -95,7 +94,7 @@ Lambda expression provides implementation of functional interface. An interface 
 
             <TextView
                 android:id="@+id/tvTimeInMRV"
-                android:layout_width="match_parent"
+                android:layout_width="181dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
                 android:gravity="end"

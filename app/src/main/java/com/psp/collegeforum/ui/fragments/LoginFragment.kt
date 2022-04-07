@@ -34,10 +34,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val TAG = "LoginActivity"
     private val RC_SIGN_IN = 11
 
-    private val clientId =
-        "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
-
-
+    private val clientId = "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -124,6 +121,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 //            finish()
 
         }
+        Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_mainFragment)
+
     }
 
     override fun onDestroyView() {
