@@ -20,10 +20,8 @@ class MainViewModel @Inject constructor(
     val question: LiveData<ArrayList<Question>> = _questions
 
     fun getQuestions() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch{
             _questions.value = repository.getAllQuestions()
         }
     }
-
-
 }

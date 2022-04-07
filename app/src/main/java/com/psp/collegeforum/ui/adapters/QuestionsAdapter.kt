@@ -31,7 +31,7 @@ class QuestionsAdapter : ListAdapter<Question, QuestionsAdapter.QuestionViewHold
         val currentItem = getItem(position)
         holder.title.text = currentItem.question_text
         holder.name.text = currentItem.user.name
-        holder.time.text = currentItem.timestamp
+        holder.time.text = currentItem.timestamp.slice(0..9)
     }
 
     class DataComparator : DiffUtil.ItemCallback<Question>() {
