@@ -4,7 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:name=".core.ForumApplication"
         android:icon="@mipmap/ic_launcher"

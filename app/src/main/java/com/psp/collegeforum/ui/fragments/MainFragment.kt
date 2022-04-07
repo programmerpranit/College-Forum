@@ -52,7 +52,7 @@ class MainFragment : Fragment() {
         }
 
 
-        binding.tv.text = "Pranit"
+        binding.tv.text = "Sarvesh"
         viewmodel.getQuestions()
 
         adapter = QuestionsAdapter()

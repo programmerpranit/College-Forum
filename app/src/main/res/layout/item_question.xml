@@ -1,70 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
     android:elevation="16dp"
-    app:cardCornerRadius="8dp">
+    android:layout_margin="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--This is the item of question+first ans which will be shown to the user
+   when he clicks on the question in main rv.
+   It has 4 main tv's
+   1:Question
+   2:Answer(Most Useful)
+   3:User name(Who asked)
+   4:Time of asking
+   #SR #PK -->
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="15dp"
+        android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/etQuestionInMRV"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:text="What is lambda expression in 8.04 JAVA ?"
+        android:textStyle="bold"
+        android:textSize="20sp">
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/btnMoreOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:src="@drawable/ic_more_options">
+
+    </ImageButton>
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" />
 
         <TextView
-            android:id="@+id/tvQuestionInMRV"
-            android:layout_width="0dp"
+            android:id="@+id/tvAnswerInMRV"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/btnMoreOptions"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="What is lambda expression in 8.04 JAVA ?" />
+            android:maxLines="4"
+            android:text="Lambda Expression is the new feature of Java 8 and replacement of anonymous inner class to implement the interface method.
+Lambda expression provides implementation of functional interface. An interface which has only one abstract method."
+            android:textSize="18sp"
+            android:textStyle="normal" />
 
-        <ImageButton
-            android:id="@+id/btnMoreOptions"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:background="@color/white"
-            android:src="@drawable/ic_more_options"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="8dp">
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/asked_by"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Asked By: "
-            android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvQuestionInMRV" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvUserNameInMRV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/asked_by"
-            app:layout_constraintTop_toBottomOf="@id/tvQuestionInMRV"
-            tools:text="SARVESH" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asked By: "
+                android:textSize="20sp"
+                android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/tvTimeInMRV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="15dp"
-            android:textSize="16sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvQuestionInMRV"
-            tools:text="12:00" />
+            <TextView
+                android:id="@+id/tvUserNameInMRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SARVESH"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <TextView
+                android:id="@+id/tvTimeInMRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:gravity="end"
+                android:text="12:00"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

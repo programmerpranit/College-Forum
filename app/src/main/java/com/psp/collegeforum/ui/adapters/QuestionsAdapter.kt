@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,9 @@ class QuestionsAdapter : ListAdapter<Question, QuestionsAdapter.QuestionViewHold
 //        ) : RecyclerView.ViewHolder(binding.root)
 
     inner class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title:TextView = itemView.findViewById(R.id.tvAnswerInMRV)
+        val title:TextView = itemView.findViewById(R.id.tvQuestionInMRV)
+       // val name:TextView = itemView.findViewById(R.id.tvUserNameInMRV)
+        //val time:TextView = itemView.findViewById(R.id.tvTimeInMRV)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionViewHolder {
@@ -28,12 +29,14 @@ class QuestionsAdapter : ListAdapter<Question, QuestionsAdapter.QuestionViewHold
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
         val currentItem = getItem(position)
-        holder.title.text = currentItem.title
+        holder.title.text = currentItem.question_text
+        //holder.name.text = currentItem.user.name
+       // holder.time.text = currentItem.timestamp
     }
 
     class DataComparator : DiffUtil.ItemCallback<Question>() {
         override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean {
-            return oldItem.title == newItem.title
+            return oldItem.qid == newItem.qid
         }
 
         override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean {
