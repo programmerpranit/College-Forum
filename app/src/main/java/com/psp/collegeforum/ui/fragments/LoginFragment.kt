@@ -124,6 +124,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 //            finish()
 
         }
+        Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_mainFragment)
+
     }
 
     override fun onDestroyView() {

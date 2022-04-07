@@ -18,8 +18,8 @@ class QuestionsAdapter : ListAdapter<Question, QuestionsAdapter.QuestionViewHold
 
     inner class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title:TextView = itemView.findViewById(R.id.tvQuestionInMRV)
-       // val name:TextView = itemView.findViewById(R.id.tvUserNameInMRV)
-        //val time:TextView = itemView.findViewById(R.id.tvTimeInMRV)
+        val name:TextView = itemView.findViewById(R.id.tvUserNameInMRV)
+        val time:TextView = itemView.findViewById(R.id.tvTimeInMRV)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionViewHolder {
@@ -30,8 +30,8 @@ class QuestionsAdapter : ListAdapter<Question, QuestionsAdapter.QuestionViewHold
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.title.text = currentItem.question_text
-        //holder.name.text = currentItem.user.name
-       // holder.time.text = currentItem.timestamp
+        holder.name.text = currentItem.user.name
+        holder.time.text = currentItem.timestamp
     }
 
     class DataComparator : DiffUtil.ItemCallback<Question>() {
@@ -42,7 +42,5 @@ class QuestionsAdapter : ListAdapter<Question, QuestionsAdapter.QuestionViewHold
         override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean {
             return oldItem == newItem
         }
-
     }
-
 }
