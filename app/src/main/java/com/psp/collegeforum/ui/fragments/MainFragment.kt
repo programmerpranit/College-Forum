@@ -52,10 +52,8 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
          Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_userProfileFragment)
         }
 
-
         binding.tv.text = "Sarvesh"
         viewmodel.getQuestions()
-
         adapter = QuestionsAdapter(this)
 
         viewmodel.question.observe(viewLifecycleOwner) { list ->
@@ -65,7 +63,6 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
         val recyclerView = binding.rvInMainFrag
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
-
     }
 
     override fun onItemClicked(item: Question) {

@@ -1,6 +1,6 @@
 package com.psp.collegeforum.data.models
 
 data class FullQuestion(
-    val answers: List<Answer>,
+    val answers: ArrayList<Answer>,
     val question: Question
 )
