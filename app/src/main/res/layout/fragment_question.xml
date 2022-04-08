@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.QuestionFragment">
+    tools:context=".ui.fragments.QuestionFragment"
+    android:id="@+id/OnClickAnswers">
 
     <!-- This layout will be shown when user opens a
      question i.e clicks on question in main rv

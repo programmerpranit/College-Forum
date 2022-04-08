@@ -9,5 +9,7 @@ interface BackendApi {
     @GET("/forum/questions")
     suspend fun getQuestions(): ArrayList<Question>
 
+//    @GET("/forum/fullquestion")
+//    suspend fun getFullQuestion(): A
 
 }
