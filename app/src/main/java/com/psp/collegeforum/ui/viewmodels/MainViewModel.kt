@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.psp.collegeforum.data.models.Answer
+import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
 import com.psp.collegeforum.data.repositories.MainRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,8 +21,8 @@ class MainViewModel @Inject constructor(
     private var _questions = MutableLiveData<ArrayList<Question>>()
     val question: LiveData<ArrayList<Question>> = _questions
 
-    private var _answers = MutableLiveData<ArrayList<Answer>>()
-    val answer: LiveData<ArrayList<Answer>> = _answers
+    private var _answers = MutableLiveData<FullQuestion>()
+    val answer: LiveData<FullQuestion> = _answers
 
     //Function to fetch questions
     fun getQuestions() {
@@ -33,7 +34,7 @@ class MainViewModel @Inject constructor(
     //Function to fetch answers
     fun getAnswers() {
         viewModelScope.launch {
-            _answers.value = repository.getAllAnswer().answers
+            _answers.value = repository.getAllAnswer()
         }
     }
 }

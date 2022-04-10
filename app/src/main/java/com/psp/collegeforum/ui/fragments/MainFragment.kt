@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_main.view.*
 class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
 
     //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTU2NTA5OTk3NDI3MzA3NDQyMTgiLCJleHAiOjE2NTE4NTk1OTIsImlhdCI6MTY0OTI2NzU5Mn0.MmCqNZJ18nR74xQK4Cu-T4iw0dESW4x6ZnkGIlOrvkc
-    
 
     private val viewmodel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentMainBinding

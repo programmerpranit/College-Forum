@@ -39,8 +39,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
         viewmodel.getAnswers()
         adapter = AnswerAdapter()
 
-        viewmodel.answer.observe(viewLifecycleOwner) { list ->
-            adapter.submitList(list)
+        viewmodel.answer.observe(viewLifecycleOwner) { lists ->
+            adapter.submitList(lists)
         }
 
         val recyclerView = binding.rvInQuestionFrag
