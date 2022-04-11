@@ -1,5 +1,6 @@
 package com.psp.collegeforum.data
 
+import com.psp.collegeforum.data.models.Answer
 import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
 import retrofit2.Response
@@ -21,6 +22,16 @@ interface BackendApi {
         @Field("question_text") question_text: String?,
         @Field("jwttoken") jwtKey: String?
     ): Response<Question>
+
+
+    @FormUrlEncoded
+    @POST("/forum/addanswer")
+    suspend fun postAnswer(
+        @Field("qid") qid: Int,
+        @Field("answer_text") answer_text: String,
+        @Field("jwttoken") jwtKey: String?
+
+        ): Response<Answer>
 
 
 }

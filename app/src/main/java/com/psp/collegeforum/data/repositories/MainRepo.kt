@@ -5,9 +5,7 @@ import com.psp.collegeforum.data.models.Answer
 import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
 import com.psp.collegeforum.util.Resource
-import retrofit2.Call
 import javax.inject.Inject
-import javax.inject.Named
 
 class MainRepo @Inject constructor(
     private val api: BackendApi
@@ -64,6 +62,22 @@ class MainRepo @Inject constructor(
         } catch (e: Exception){
             Resource.Error(e.localizedMessage ?: "Unknown Error occurred")
         }
+    }
+
+    suspend fun postAnswer(qid : Int,answerText : String): Resource<Answer>{
+        return try {
+            val res = api.postAnswer(qid,answerText, jwtkey)
+            val result = res.body()
+            val status = res.code()
+            if(res.isSuccessful && result != null){
+                Resource.Success(result,status)
+            }else{
+                Resource.Error(res.message())
+            }
+        } catch (e: Exception){
+            Resource.Error(e.localizedMessage ?: "Unknown Error Occurred")
+        }
+
     }
 
 }
