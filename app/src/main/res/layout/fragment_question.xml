@@ -47,7 +47,7 @@
 of the database. A relation schema may need to be decomposed into two or
 more schemas to facilita."
             android:textSize="20sp"
-            android:textStyle="bold||italic"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
