@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.psp.collegeforum.R
 import com.psp.collegeforum.data.models.Answer
-import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
+import com.psp.collegeforum.data.models.FullQuestion
 
-class AnswerAdapter : ListAdapter <Answer, AnswerAdapter.AnswerViewHolder>(DataComparator()) {
+class AnswerAdapter : ListAdapter<Answer, AnswerAdapter.AnswerViewHolder>(DataComparator()) {
 
 //    inner class QuestionViewHolder(
 //        private val binding: ItemQuestionBinding
@@ -46,5 +46,4 @@ class AnswerAdapter : ListAdapter <Answer, AnswerAdapter.AnswerViewHolder>(DataC
             return oldItem == newItem
         }
     }
-
 }

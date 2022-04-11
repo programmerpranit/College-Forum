@@ -6,19 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.psp.collegeforum.R
-import com.psp.collegeforum.databinding.FragmentMainBinding
 import com.psp.collegeforum.databinding.FragmentQuestionBinding
 import com.psp.collegeforum.ui.adapters.AnswerAdapter
-import com.psp.collegeforum.ui.adapters.QuestionsAdapter
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_main.view.*
 
 @AndroidEntryPoint
-class QuestionFragment : Fragment(R.layout.fragment_question) {
+class QuestionFragment : Fragment() {
 
     private val viewmodel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentQuestionBinding
@@ -39,7 +34,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
         viewmodel.getAnswers()
         adapter = AnswerAdapter()
 
-        viewmodel.answer.observe(viewLifecycleOwner) { lists ->
+        viewmodel.fullquestion.observe(viewLifecycleOwner) { lists ->
             adapter.submitList(lists)
         }
 

@@ -9,7 +9,6 @@ import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
 import com.psp.collegeforum.data.repositories.MainRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,8 +20,8 @@ class MainViewModel @Inject constructor(
     private var _questions = MutableLiveData<ArrayList<Question>>()
     val question: LiveData<ArrayList<Question>> = _questions
 
-    private var _answers = MutableLiveData<FullQuestion>()
-    val answer: LiveData<FullQuestion> = _answers
+    private var _fullquestion = MutableLiveData<ArrayList<Answer>>()
+    val fullquestion: LiveData<ArrayList<Answer>> = _fullquestion
 
     //Function to fetch questions
     fun getQuestions() {
@@ -31,10 +30,10 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    //Function to fetch answers
+    //Function to fetch full question answers
     fun getAnswers() {
         viewModelScope.launch {
-            _answers.value = repository.getAllAnswer()
+            _fullquestion.value = repository.getFullQuestion()
         }
     }
 }

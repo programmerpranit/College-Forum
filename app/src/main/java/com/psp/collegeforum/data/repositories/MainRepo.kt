@@ -14,8 +14,8 @@ class MainRepo @Inject constructor(
         return api.getQuestions()
     }
 
-    suspend fun getAllAnswer() :FullQuestion {
-        return api.getAnswer()
+    suspend fun getFullQuestion(): ArrayList<Answer> {
+        return api.getFullQuestion()
     }
 
 }

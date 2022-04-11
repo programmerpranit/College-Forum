@@ -14,10 +14,8 @@ interface BackendApi {
     suspend fun getQuestions(): ArrayList<Question>
 
 
-    @GET("/forum/fullquestion?qid=1")
-    suspend fun getAnswer(@Body qid: Int =1): FullQuestion
+    @GET("/forum/fullquestion")
+    suspend fun getFullQuestion(): ArrayList<Answer>
 
-//    @GET("/forum/fullquestion")
-//    suspend fun getFullQuestion(): A
 
 }
