@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.psp.collegeforum.R
 import com.psp.collegeforum.databinding.FragmentAddQuestionBinding
 import com.psp.collegeforum.databinding.FragmentQuestionBinding
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AddQuestion : Fragment(R.layout.fragment_add_question) {
@@ -36,14 +40,19 @@ class AddQuestion : Fragment(R.layout.fragment_add_question) {
 
         submitButton.setOnClickListener {
             val question = binding.etAddQuestion.text.toString()
-            val res = viewmodel.postQuestion(question)
-            if(res){
-                view.findNavController().navigate(R.id.action_addQuestion_to_mainFragment)
-            } else {
-                Toast.makeText(requireContext(), "Failed to add question", Toast.LENGTH_SHORT).show()
-            }
-        }
 
+            lifecycleScope.launch(Dispatchers.Main) {
+                val res = viewmodel.postQuestion(question)
+
+                if (res) {
+                    view.findNavController().navigate(R.id.action_addQuestion_to_mainFragment)
+                    Toast.makeText(requireContext(), "Question Added Successfully", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Failed to add question", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
 
     }
 
