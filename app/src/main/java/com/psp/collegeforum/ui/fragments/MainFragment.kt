@@ -52,7 +52,6 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
          Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_userProfileFragment)
         }
 
-        binding.tv.text = "Sarvesh"
         viewmodel.getQuestions()
         adapter = QuestionsAdapter(this)
 

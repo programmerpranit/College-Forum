@@ -17,7 +17,6 @@
     #PK #SR
     -->
 
-
     <Button
         android:id="@+id/btnAddQuestion"
         android:layout_width="match_parent"
