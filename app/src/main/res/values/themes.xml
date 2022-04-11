@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.CollegeForum" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#22D3EE</item>
-        <item name="colorPrimaryVariant">#22D3EE</item>
+        <item name="colorPrimary">#00acc1</item>
+        <item name="colorPrimaryVariant">#00acc1</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -12,5 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/sansproregular</item>
     </style>
 </resources>

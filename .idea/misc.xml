@@ -3,16 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_add.xml" value="0.2075" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_details.xml" value="0.164" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2075" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_more_options.xml" value="0.2075" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_profile.xml" value="0.164" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_profilepic.xml" value="0.164" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_search.xml" value="0.2075" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_userProfile.xml" value="0.164" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_userprofile.xml" value="0.121" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_userprofileinfragmentmain.xml" value="0.2075" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/reportmenu.xml" value="0.1575" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/activity_main.xml" value="0.11851851851851852" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_add_question.xml" value="0.264" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_login.xml" value="0.1634963768115942" />
-        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_main.xml" value="0.264" />
+        <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_main.xml" value="0.2" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_question.xml" value="0.264" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_search.xml" value="0.2" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_student_profile.xml" value="0.264" />
