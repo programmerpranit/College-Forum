@@ -41,7 +41,6 @@ class MainViewModel @Inject constructor(
                 _fullquestion.value = fullQuestion.data!!
             }
         }
-
     }
 
     fun postQuestion(){
