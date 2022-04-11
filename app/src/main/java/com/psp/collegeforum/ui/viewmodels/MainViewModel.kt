@@ -55,25 +55,25 @@ class MainViewModel @Inject constructor(
 
 
     //TODO: Optimize following code
-    fun postQuestion(question: String): Boolean {
+    suspend fun postQuestion(question: String): Boolean {
         var status = 1000
-        val job = viewModelScope.launch(Dispatchers.IO) {
+        val job = viewModelScope.async {
             val req = repository.postQuestion(question)
             Log.d(TAG, req.message.toString())
             Log.d(TAG, req.status.toString())
             Log.d(TAG, req.data.toString())
             status = req.status ?: 1000
         }
-        Log.d(TAG,status.toString())
+
+        job.await()
+
+        Log.d(TAG, (job.isCompleted && status==201).toString())
         return (job.isCompleted && status==201)
     }
-//    fun postQuestion(question: String): Boolean {
-//        var response = false
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val fullQuestion = repository.postQuestion(question)
-//            response = (fullQuestion.status == 201)
-//        }
-//        return response
-//    }
+
+
+    fun postanswer(answer: String, qid: Int) {
+        //TODO:dnsn
+    }
 
 }
