@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_details.xml" value="0.164" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_profile.xml" value="0.164" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_profilepic.xml" value="0.164" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_userProfile.xml" value="0.164" />
+        <entry key="..\:/College-Forum/app/src/main/res/drawable/ic_userprofile.xml" value="0.121" />
         <entry key="..\:/College-Forum/app/src/main/res/drawable/reportmenu.xml" value="0.1575" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/activity_main.xml" value="0.11851851851851852" />
         <entry key="..\:/College-Forum/app/src/main/res/layout/fragment_add_question.xml" value="0.264" />

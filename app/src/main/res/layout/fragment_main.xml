@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_profile"
+        android:src="@drawable/ic_userprofileinfragmentmain"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -56,6 +56,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgBtnProfile"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_question" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -64,7 +65,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:src="@drawable/ic_add"
-        app:backgroundTint="#93E9F4"
+        app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
