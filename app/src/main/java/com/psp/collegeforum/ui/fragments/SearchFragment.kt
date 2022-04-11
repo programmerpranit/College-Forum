@@ -36,8 +36,8 @@ class SearchFragment : Fragment() {
 
         // Navigation and buttons to other fragments
         // Add question btn
-        view.fabAddQuestionInSearchFrag.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_addQuestion)
-        }
+//        view.fabAddQuestionInSearchFrag.setOnClickListener {
+//            Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_addQuestion)
+//        }
     }
 }
