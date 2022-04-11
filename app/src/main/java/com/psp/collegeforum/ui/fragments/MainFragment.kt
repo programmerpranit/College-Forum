@@ -1,18 +1,16 @@
 package com.psp.collegeforum.ui.fragments
 
 import android.os.Bundle
-<<<<<<< HEAD
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-=======
+
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
->>>>>>> 6cfe605fa483a8309ecc3f5a138dc30376b3692a
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,6 +57,9 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
         view.imgBtnSearchQuestion.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_searchFragment)
         }
+        view.imgBtnProfile.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_userProfileFragment)
+        }
         //Profile btn
         view.imgBtnProfile.setOnClickListener {
             Navigation.findNavController(view)
@@ -82,11 +83,7 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
     }
 
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 6cfe605fa483a8309ecc3f5a138dc30376b3692a
     override fun onItemClicked(item: Question) {
         val bundle = bundleOf("qid" to item.qid.toString())
         Navigation.findNavController(binding.root)

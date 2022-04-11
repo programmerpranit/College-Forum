@@ -27,6 +27,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="25dp"
         app:cardCornerRadius="5dp"
+        android:elevation="20dp"
         android:padding="5dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/questionsAskedCardview"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="25dp"
+
         >
 
 
@@ -87,7 +89,7 @@
                 android:id="@+id/tvAQ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Questions Answered: "
+                android:text="Questions Answered"
                 android:textSize="25sp"
                 android:layout_margin="10dp"
                 android:textColor="@color/black"

@@ -6,14 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.MainFragment">
-
     <!-- THIS IS THE MAIN FRAG ACTIVITY #SR -->
-
-
-
-
-
-
     <ImageButton
 
         android:id="@+id/imgBtnProfile"
@@ -33,6 +26,7 @@
         android:padding="5dp"
         app:layout_constraintRight_toLeftOf="@id/imgBtnSearchQuestion"
         android:text="College Forum"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="28sp"
