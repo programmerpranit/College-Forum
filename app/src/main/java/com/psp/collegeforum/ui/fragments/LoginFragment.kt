@@ -103,11 +103,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onStart() {
         super.onStart()
 
-        // Check for existing Google Sign In account, if the user is already signed in
-        // the GoogleSignInAccount will be non-null.
         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         updateUI(account)
-
     }
 
     private fun updateUI(account: GoogleSignInAccount?) {
@@ -117,11 +114,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             // p -- Send request to backend to check if email is valid
             // create a user if there is none and return the user data
 
-//            Log.d(TAG, "UI Updated")
-//            val mIntent = Intent(this, MainActivity::class.java)
-//            mIntent.putExtra("email", account.email)
-//            startActivity(mIntent)
-//            finish()
 
         }
         Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_mainFragment)

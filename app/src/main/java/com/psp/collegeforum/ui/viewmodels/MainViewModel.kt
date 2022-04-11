@@ -1,21 +1,27 @@
 package com.psp.collegeforum.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.psp.collegeforum.data.models.Answer
 import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
 import com.psp.collegeforum.data.repositories.MainRepo
+import com.psp.collegeforum.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: MainRepo
 ) : ViewModel() {
+
+    val TAG = "MainVM"
 
     private var _questions = MutableLiveData<ArrayList<Question>>()
     val question: LiveData<ArrayList<Question>> = _questions
@@ -25,27 +31,48 @@ class MainViewModel @Inject constructor(
 
     //Function to fetch questions
     fun getQuestions() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val allQuestions = repository.getAllQuestions()
-            if (allQuestions.status == 200){
-                _questions.value = allQuestions.data!!
+            if (allQuestions.status == 200) {
+                withContext(Dispatchers.Main){
+                    _questions.value = allQuestions.data!!
+                }
             }
         }
     }
 
     //Function to fetch full question answers
-    fun getFullQuestion(qid:Int) {
-        viewModelScope.launch {
+    fun getFullQuestion(qid: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
             val fullQuestion = repository.getFullQuestion(qid)
-            if (fullQuestion.status == 200){
-                _fullquestion.value = fullQuestion.data!!
+            if (fullQuestion.status == 200) {
+                withContext(Dispatchers.Main) {
+                    _fullquestion.value = fullQuestion.data!!
+                }
             }
         }
-
     }
 
-    fun postQuestion(){
 
+    //TODO: Optimize following code
+    fun postQuestion(question: String): Boolean {
+        var status = 1000
+        val job = viewModelScope.launch(Dispatchers.IO) {
+            val req = repository.postQuestion(question)
+            Log.d(TAG, req.message.toString())
+            Log.d(TAG, req.status.toString())
+            Log.d(TAG, req.data.toString())
+            status = req.status ?: 1000
+        }
+        return (job.isCompleted && status==201)
     }
+//    fun postQuestion(question: String): Boolean {
+//        var response = false
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val fullQuestion = repository.postQuestion(question)
+//            response = (fullQuestion.status == 201)
+//        }
+//        return response
+//    }
 
 }
