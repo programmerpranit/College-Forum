@@ -5,10 +5,7 @@ import com.psp.collegeforum.data.models.FullQuestion
 import com.psp.collegeforum.data.models.Question
 import com.psp.collegeforum.data.models.User
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface BackendApi {
@@ -17,8 +14,8 @@ interface BackendApi {
     suspend fun getQuestions(): ArrayList<Question>
 
 
-    @GET("/forum/fullquestion?qid=1")
-    suspend fun getFullQuestion(): FullQuestion
+    @GET("/forum/fullquestion")
+    suspend fun getFullQuestion(@Query("qid") qid: Int): FullQuestion
 
     @FormUrlEncoded
     @POST("/forum/addquestion")

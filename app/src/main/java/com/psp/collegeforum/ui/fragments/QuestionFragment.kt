@@ -31,7 +31,10 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewmodel.getFullQuestion()
+        val qid = arguments?.getString("qid").toString().toInt()
+
+
+        viewmodel.getFullQuestion(qid)
         adapter = AnswerAdapter()
 
         viewmodel.fullquestion.observe(viewLifecycleOwner) { fullQuestion ->

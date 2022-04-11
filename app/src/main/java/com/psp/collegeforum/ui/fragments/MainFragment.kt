@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,6 +66,8 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
     }
 
     override fun onItemClicked(item: Question) {
-        Navigation.findNavController(binding.root).navigate(R.id.action_mainFragment_to_questionFragment)
+        val bundle = bundleOf("qid" to item.qid.toString())
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_mainFragment_to_questionFragment, bundle)
     }
 }
