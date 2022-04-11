@@ -64,6 +64,7 @@ class MainViewModel @Inject constructor(
             Log.d(TAG, req.data.toString())
             status = req.status ?: 1000
         }
+        Log.d(TAG,status.toString())
         return (job.isCompleted && status==201)
     }
 //    fun postQuestion(question: String): Boolean {

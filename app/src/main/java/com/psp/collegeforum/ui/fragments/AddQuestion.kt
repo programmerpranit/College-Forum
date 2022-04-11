@@ -37,14 +37,13 @@ class AddQuestion : Fragment(R.layout.fragment_add_question) {
         submitButton.setOnClickListener {
             val question = binding.etAddQuestion.text.toString()
             val res = viewmodel.postQuestion(question)
+
             if(res){
-                view.findNavController().navigate(R.id.action_addQuestion_to_mainFragment)
+                Toast.makeText(requireContext(), "Failed to Add", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Failed to add question", Toast.LENGTH_SHORT).show()
+                view.findNavController().navigate(R.id.action_addQuestion_to_mainFragment)
+                Toast.makeText(requireContext(), "Question added.", Toast.LENGTH_SHORT).show()
             }
         }
-
-
     }
-
 }
