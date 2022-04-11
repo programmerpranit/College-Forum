@@ -14,6 +14,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -30,6 +31,7 @@ class AppModule {
     // to get the jwt key that we stored inside shared pref
     @Singleton
     @Provides
+    @Named("jwtkey")
     fun provideJWTKey(sharedPreferences: SharedPreferences) =
         sharedPreferences.getString(KEY_JWT, "")?:""
 

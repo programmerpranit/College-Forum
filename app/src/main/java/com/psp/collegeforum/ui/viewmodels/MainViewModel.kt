@@ -1,5 +1,6 @@
 package com.psp.collegeforum.ui.viewmodels
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val repository: MainRepo
 ) : ViewModel() {
+
 
     val TAG = "MainVM"
 
@@ -59,9 +61,6 @@ class MainViewModel @Inject constructor(
         var status = 1000
         val job = viewModelScope.async {
             val req = repository.postQuestion(question)
-            Log.d(TAG, req.message.toString())
-            Log.d(TAG, req.status.toString())
-            Log.d(TAG, req.data.toString())
             status = req.status ?: 1000
         }
 
@@ -70,6 +69,8 @@ class MainViewModel @Inject constructor(
         Log.d(TAG, (job.isCompleted && status==201).toString())
         return (job.isCompleted && status==201)
     }
+
+
 
 
     fun postanswer(answer: String, qid: Int) {

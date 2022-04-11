@@ -1,6 +1,8 @@
 package com.psp.collegeforum.data
 
+import com.psp.collegeforum.data.models.DetailedUser
 import com.psp.collegeforum.data.models.FullQuestion
+import com.psp.collegeforum.data.models.Jwt
 import com.psp.collegeforum.data.models.Question
 import retrofit2.Response
 import retrofit2.http.*
@@ -21,6 +23,21 @@ interface BackendApi {
         @Field("question_text") question_text: String?,
         @Field("jwttoken") jwtKey: String?
     ): Response<Question>
+
+    @FormUrlEncoded
+    @POST("/account/auth")
+    suspend fun authenticate(
+        @Field("gtoken") gtoken: String?
+    ): Response<Jwt>
+
+    @FormUrlEncoded
+    @POST("/account/user")
+    suspend fun postUser(
+        @Field("jwttoken") jwtKey: String?,
+        @Field("prn") prn: Int,
+        @Field("name") name: String,
+        @Field("year of study") yos: Int
+    ): Response<DetailedUser>
 
 
 }
