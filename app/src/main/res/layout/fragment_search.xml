@@ -19,6 +19,7 @@
         android:hint="Search Question"
         app:boxBackgroundColor="#FFFFFF"
         app:boxBackgroundMode="outline"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
