@@ -1,14 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.UserProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageviewProfile"
+        android:layout_width="200dp"
+        android:layout_height="181dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_userprofile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/studentNameUserid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageviewProfile"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Prathamesh Karambelkar"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/questionsAskedCardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/studentNameUserid"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginVertical="10dp"
+        app:cardCornerRadius="5dp"
+        android:elevation="20dp"
+        android:layout_marginLeft="30dp"
+        android:padding="5dp"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clcardviewquestion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+
+            <TextView
+                android:id="@+id/tvquestionasked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Questions Asked: "
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+
+                app:layout_constraintTop_toTopOf="@id/clcardviewquestion"
+                app:layout_constraintLeft_toLeftOf="@id/clcardviewquestion"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvtotalQuestionsAsked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:text="89"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@id/clcardviewquestion"
+                app:layout_constraintTop_toBottomOf="@id/tvquestionasked"
+                app:layout_constraintLeft_toLeftOf="@id/clcardviewquestion"
+                tools:layout_editor_absoluteY="19dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/totalQuestionsAnsweredCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/questionsAskedCardview"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginVertical="10dp"
+        android:layout_marginRight="30dp"
+        android:padding="5dp"
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cltotalQuestionsAnswered"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:id="@+id/tvAQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Questions Answered:"
+                android:textSize="25sp"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+
+                app:layout_constraintTop_toTopOf="@id/cltotalQuestionsAnswered"
+                app:layout_constraintLeft_toLeftOf="@id/cltotalQuestionsAnswered"
+
+                />
+
+            <TextView
+                android:id="@+id/tvTotalQuestionsAnswered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="56"
+                android:textSize="25sp"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+
+                app:layout_constraintBottom_toBottomOf="@id/cltotalQuestionsAnswered"
+                app:layout_constraintTop_toBottomOf="@id/tvAQ"
+                app:layout_constraintLeft_toLeftOf="@id/cltotalQuestionsAnswered"
+
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

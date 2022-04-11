@@ -1,11 +1,16 @@
 package com.psp.collegeforum.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import android.view.*
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,32 +30,43 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
     private val viewmodel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapter: QuestionsAdapter
+    val reportmenu = view?.findViewById<TextView>(R.id.report_menu)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Navigation and buttons to other fragments
         // Add question btn
+
+
+
         view.fabAddQuestion.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addQuestion)
         }
         // Search btn
         view.imgBtnSearchQuestion.setOnClickListener {
-          Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_searchFragment)
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_searchFragment)
         }
-         //Profile btn
+        view.imgBtnProfile.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_userProfileFragment)
+        }
+        //Profile btn
         view.imgBtnProfile.setOnClickListener {
-         Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_userProfileFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_mainFragment_to_userProfileFragment)
         }
+
+
 
         viewmodel.getQuestions()
         adapter = QuestionsAdapter(this)
@@ -60,9 +76,13 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
         }
 
         val recyclerView = binding.rvInMainFrag
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
+
     }
+
+
 
     override fun onItemClicked(item: Question) {
         val bundle = bundleOf("qid" to item.qid.toString())
@@ -70,3 +90,5 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
             .navigate(R.id.action_mainFragment_to_questionFragment, bundle)
     }
 }
+
+
