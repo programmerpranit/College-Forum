@@ -53,7 +53,9 @@ class QuestionFragment : Fragment() {
                 }else{
                     Toast.makeText(requireContext(), "Answer Not", Toast.LENGTH_SHORT).show()
                 }
+                viewmodel.getFullQuestion(qid)
             }
+
         }
 
         viewmodel.fullquestion.observe(viewLifecycleOwner) { fullQuestion ->
