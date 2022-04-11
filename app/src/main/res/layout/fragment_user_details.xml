@@ -175,7 +175,6 @@ login's for the FIRST TIME (If no sign in with google) #SR-->
             android:layout_height="wrap_content"
             android:outlineProvider="background"
             android:text="Submit"
-            style="?attr/materialButtonOutlinedStyle"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
