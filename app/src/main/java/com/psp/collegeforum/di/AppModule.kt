@@ -31,7 +31,6 @@ class AppModule {
     // to get the jwt key that we stored inside shared pref
     @Singleton
     @Provides
-    @Named("jwtkey")
     fun provideJWTKey(sharedPreferences: SharedPreferences) =
         sharedPreferences.getString(KEY_JWT, "")?:""
 

@@ -1,6 +1,7 @@
 package com.psp.collegeforum.ui.viewmodels
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.psp.collegeforum.data.repositories.MainRepo
@@ -16,14 +17,19 @@ class AuthViewModels @Inject constructor(
 ) : ViewModel(){
 
 
-    @Inject
-    private lateinit var sharedPreferences: SharedPreferences
+    @Inject lateinit var sharedPreferences: SharedPreferences
+
+    var jwt = ""
+
 
     suspend fun authenticate(gtoken: String): Int {
         var status = 1000
         val job = viewModelScope.async {
             val req = repository.authenticate(gtoken)
             val jwtObj = req.data
+            jwt = req.data?.token.toString()
+            print(req.data ?: "req data is null")
+            Log.d("mainvm", req.data?.token ?: "token")
             if (jwtObj != null) {
                 sharedPreferences.edit()
                     .putString(KEY_JWT, jwtObj.token)
@@ -38,9 +44,19 @@ class AuthViewModels @Inject constructor(
         return status
     }
 
-    suspend fun editUser(name: String, prn: Int, yos:Int){
+    suspend fun editUser(name: String, prn: Int, yos:Int, jwtkey:String):Boolean {
+        var status = 1000
+        Log.d("JWT KEY", jwtkey)
+        Log.d("Edit User", jwt)
+        val job = viewModelScope.async {
+            val req = repository.postUser(name, prn, yos, jwt)
+            status = req.status ?: 1000
+        }
+        job.await()
 
+        return (job.isCompleted && status==201)
     }
+
 
 
 }

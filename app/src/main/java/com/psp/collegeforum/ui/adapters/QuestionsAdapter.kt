@@ -1,5 +1,6 @@
 package com.psp.collegeforum.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +35,11 @@ class QuestionsAdapter(private val listner:QueClicked) : ListAdapter<Question, Q
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.title.text = currentItem.question_text
-        //holder.name.text = currentItem.user.name
+
+//        Log.d("User Obj", user.toString())
+//        Log.d("User Name", user.name)
+
+        holder.name.text = currentItem.user.name
         holder.time.text = currentItem.timestamp.slice(0..9)
     }
         class DataComparator : DiffUtil.ItemCallback<Question>() {

@@ -16,12 +16,14 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Named
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: MainRepo
 ) : ViewModel() {
 
+    @Inject lateinit var jwtkey:String
 
     val TAG = "MainVM"
 
@@ -60,7 +62,7 @@ class MainViewModel @Inject constructor(
     suspend fun postQuestion(question: String): Boolean {
         var status = 1000
         val job = viewModelScope.async {
-            val req = repository.postQuestion(question)
+            val req = repository.postQuestion(question, jwtkey)
             status = req.status ?: 1000
         }
 
@@ -70,11 +72,19 @@ class MainViewModel @Inject constructor(
         return (job.isCompleted && status==201)
     }
 
+    suspend fun postAnswer(qid: Int,answer: String): Boolean {
+        var status = 1000
+        val job = viewModelScope.async {
+            val req = repository.postAnswer(qid,answer, jwtkey)
+            Log.d(TAG, req.message.toString())
+            Log.d(TAG, req.status.toString())
+            Log.d(TAG, req.data.toString())
+            status = req.status ?: 1000
+        }
+        job.await()
+        Log.d(TAG, (job.isCompleted && status == 201).toString())
+        return (job.isCompleted && status == 201)
 
-
-
-    fun postanswer(answer: String, qid: Int) {
-        //TODO:dnsn
     }
 
 }

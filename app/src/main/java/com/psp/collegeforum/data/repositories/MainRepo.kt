@@ -10,9 +10,6 @@ import javax.inject.Named
 class MainRepo @Inject constructor(
     private val api: BackendApi
 ) {
-    @Inject
-    @Named("jwtkey")
-    private lateinit var jwtkey:String
 
 //    val jwtkey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTU2NTA5OTk3NDI3MzA3NDQyMTgiLCJleHAiOjE2NTE4NTk1OTIsImlhdCI6MTY0OTI2NzU5Mn0.MmCqNZJ18nR74xQK4Cu-T4iw0dESW4x6ZnkGIlOrvkc"
 
@@ -47,7 +44,7 @@ class MainRepo @Inject constructor(
         }
     }
 
-    suspend fun postQuestion(questionText: String): Resource<Question> {
+    suspend fun postQuestion(questionText: String, jwtkey:String): Resource<Question> {
 
         return try {
             val res = api.postQuestion(questionText, jwtkey)
@@ -80,7 +77,7 @@ class MainRepo @Inject constructor(
         }
     }
 
-    suspend fun postUser(name: String, prn: Int, yos: Int): Resource<DetailedUser> {
+    suspend fun postUser(name: String, prn: Int, yos: Int, jwtkey: String): Resource<DetailedUser> {
         return try {
             val res = api.postUser(jwtkey, prn, name, yos)
             val result = res.body()
@@ -94,6 +91,22 @@ class MainRepo @Inject constructor(
         } catch (e: Exception){
             Resource.Error(e.localizedMessage ?: "Unknown Error occurred")
         }
+    }
+
+    suspend fun postAnswer(qid : Int,answerText : String, jwtkey: String): Resource<Answer>{
+        return try {
+            val res = api.postAnswer(qid,answerText, jwtkey)
+            val result = res.body()
+            val status = res.code()
+            if(res.isSuccessful && result != null){
+                Resource.Success(result,status)
+            }else{
+                Resource.Error(res.message())
+            }
+        } catch (e: Exception){
+            Resource.Error(e.localizedMessage ?: "Unknown Error Occurred")
+        }
+
     }
 
 }

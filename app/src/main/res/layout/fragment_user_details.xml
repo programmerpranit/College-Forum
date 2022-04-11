@@ -109,8 +109,7 @@ login's for the FIRST TIME (If no sign in with google) #SR-->
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilUserYOS"
-        app:layout_constraintTop_toTopOf="" />
+        app:layout_constraintTop_toBottomOf="@+id/tilUserYOS" />
 
 
 
