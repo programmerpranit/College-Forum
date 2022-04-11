@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.psp.collegeforum.R
+import com.psp.collegeforum.data.BackendApi
 import com.psp.collegeforum.databinding.FragmentAddQuestionBinding
 import com.psp.collegeforum.databinding.FragmentQuestionBinding
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
@@ -29,9 +30,6 @@ class AddQuestion : Fragment(R.layout.fragment_add_question) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
 
     }
 
