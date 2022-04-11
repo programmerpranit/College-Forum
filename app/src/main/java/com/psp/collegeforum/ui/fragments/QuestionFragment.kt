@@ -31,11 +31,12 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewmodel.getAnswers()
+        viewmodel.getFullQuestion()
         adapter = AnswerAdapter()
 
-        viewmodel.fullquestion.observe(viewLifecycleOwner) { lists ->
-            adapter.submitList(lists)
+        viewmodel.fullquestion.observe(viewLifecycleOwner) { fullQuestion ->
+            adapter.submitList(fullQuestion.answers)
+            binding.tvQuestionInQuestionFrag.text = fullQuestion.question.question_text
         }
 
         val recyclerView = binding.rvInQuestionFrag

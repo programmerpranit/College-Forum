@@ -20,8 +20,8 @@ class MainViewModel @Inject constructor(
     private var _questions = MutableLiveData<ArrayList<Question>>()
     val question: LiveData<ArrayList<Question>> = _questions
 
-    private var _fullquestion = MutableLiveData<ArrayList<Answer>>()
-    val fullquestion: LiveData<ArrayList<Answer>> = _fullquestion
+    private var _fullquestion = MutableLiveData<FullQuestion>()
+    val fullquestion: LiveData<FullQuestion> = _fullquestion
 
     //Function to fetch questions
     fun getQuestions() {
@@ -31,9 +31,15 @@ class MainViewModel @Inject constructor(
     }
 
     //Function to fetch full question answers
-    fun getAnswers() {
+    fun getFullQuestion() {
         viewModelScope.launch {
             _fullquestion.value = repository.getFullQuestion()
         }
+
     }
+
+    fun postQuestion(){
+
+    }
+
 }
