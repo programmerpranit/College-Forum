@@ -70,13 +70,10 @@ class MainViewModel @Inject constructor(
         Log.d(TAG, (job.isCompleted && status==201).toString())
         return (job.isCompleted && status==201)
     }
-//    fun postQuestion(question: String): Boolean {
-//        var response = false
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val fullQuestion = repository.postQuestion(question)
-//            response = (fullQuestion.status == 201)
-//        }
-//        return response
-//    }
+
+
+    fun postanswer(answer: String, qid: Int) {
+        //TODO:dnsn
+    }
 
 }
