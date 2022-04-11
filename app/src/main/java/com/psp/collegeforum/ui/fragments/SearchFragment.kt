@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.psp.collegeforum.R
 import com.psp.collegeforum.databinding.FragmentSearchBinding
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 
 @AndroidEntryPoint
@@ -27,8 +25,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val viewq = binding.root
-        return viewq
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,8 +33,6 @@ class SearchFragment : Fragment() {
 
         // Navigation and buttons to other fragments
         // Add question btn
-//        view.fabAddQuestionInSearchFrag.setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_addQuestion)
-//        }
+
     }
 }

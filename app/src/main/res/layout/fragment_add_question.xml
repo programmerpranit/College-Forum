@@ -24,14 +24,11 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:outlineProvider="background"
-        android:text="Upload"
-        app:cornerRadius="5dp"
+        android:text="add Question"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilAddQuestion"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintTop_toBottomOf="@+id/tilAddQuestion" />
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAddQuestion"
@@ -40,10 +37,6 @@
             android:layout_height="150dp"
             android:layout_margin="20dp"
             android:hint="Write Question"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
-            app:boxCornerRadiusTopStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -52,9 +45,7 @@
                 android:id="@+id/etAddQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:ellipsize="end"
-                android:gravity="top"
-                tools:ignore="KeyboardInaccessibleWidget" />
+                android:gravity="top" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
