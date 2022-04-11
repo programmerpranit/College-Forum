@@ -26,14 +26,20 @@ class MainViewModel @Inject constructor(
     //Function to fetch questions
     fun getQuestions() {
         viewModelScope.launch {
-            _questions.value = repository.getAllQuestions()
+            val allQuestions = repository.getAllQuestions()
+            if (allQuestions.status == 200){
+                _questions.value = allQuestions.data!!
+            }
         }
     }
 
     //Function to fetch full question answers
     fun getFullQuestion(qid:Int) {
         viewModelScope.launch {
-            _fullquestion.value = repository.getFullQuestion(qid)
+            val fullQuestion = repository.getFullQuestion(qid)
+            if (fullQuestion.status == 200){
+                _fullquestion.value = fullQuestion.data!!
+            }
         }
 
     }
