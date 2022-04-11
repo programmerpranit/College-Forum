@@ -31,9 +31,9 @@ class MainViewModel @Inject constructor(
     }
 
     //Function to fetch full question answers
-    fun getFullQuestion() {
+    fun getFullQuestion(qid:Int) {
         viewModelScope.launch {
-            _fullquestion.value = repository.getFullQuestion()
+            _fullquestion.value = repository.getFullQuestion(qid)
         }
 
     }

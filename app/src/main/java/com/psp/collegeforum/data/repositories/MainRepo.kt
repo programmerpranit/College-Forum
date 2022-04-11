@@ -15,8 +15,8 @@ class MainRepo @Inject constructor(
         return api.getQuestions()
     }
 
-    suspend fun getFullQuestion(): FullQuestion {
-        return api.getFullQuestion()
+    suspend fun getFullQuestion(qid:Int): FullQuestion {
+        return api.getFullQuestion(qid = qid)
     }
 
     suspend fun postQuestion(): String {
