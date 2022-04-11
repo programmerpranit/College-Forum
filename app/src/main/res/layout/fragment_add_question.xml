@@ -17,10 +17,8 @@
     #PK #SR
     -->
 
-
     <Button
         android:id="@+id/btnAddQuestion"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
