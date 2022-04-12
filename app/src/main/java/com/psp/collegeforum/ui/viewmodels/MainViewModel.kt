@@ -1,5 +1,6 @@
 package com.psp.collegeforum.ui.viewmodels
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,11 +16,14 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Named
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: MainRepo
 ) : ViewModel() {
+
+    @Inject lateinit var jwtkey:String
 
     val TAG = "MainVM"
 
@@ -58,10 +62,7 @@ class MainViewModel @Inject constructor(
     suspend fun postQuestion(question: String): Boolean {
         var status = 1000
         val job = viewModelScope.async {
-            val req = repository.postQuestion(question)
-            Log.d(TAG, req.message.toString())
-            Log.d(TAG, req.status.toString())
-            Log.d(TAG, req.data.toString())
+            val req = repository.postQuestion(question, jwtkey)
             status = req.status ?: 1000
         }
 
@@ -71,11 +72,10 @@ class MainViewModel @Inject constructor(
         return (job.isCompleted && status==201)
     }
 
-
     suspend fun postAnswer(qid: Int,answer: String): Boolean {
         var status = 1000
         val job = viewModelScope.async {
-            val req = repository.postAnswer(qid,answer)
+            val req = repository.postAnswer(qid,answer, jwtkey)
             Log.d(TAG, req.message.toString())
             Log.d(TAG, req.status.toString())
             Log.d(TAG, req.data.toString())

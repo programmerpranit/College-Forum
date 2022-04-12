@@ -3,12 +3,14 @@ package com.psp.collegeforum.ui.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -16,11 +18,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.psp.collegeforum.R
-import com.psp.collegeforum.core.MainActivity
 import com.psp.collegeforum.databinding.FragmentLoginBinding
 import com.psp.collegeforum.ui.viewmodels.AuthViewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -37,7 +40,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val clientId =
         "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
 
+    //    @Inject
+//    @Named("jwtkey")
+    @Inject
+    lateinit var jwtKey: String
 
+
+//    val jwtKey = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,8 +61,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.btnLogin.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment)
+        Log.d(TAG, "jwt on view created $jwtKey")
+
+        if (jwtKey != "") {
+            binding.root.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -63,9 +74,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
-        _binding?.btnLogin?.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             signIn(mGoogleSignInClient)
-
         }
     }
 
@@ -73,8 +83,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
@@ -84,14 +92,32 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             val token = account.idToken
+
+            if (token != null) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    val status = viewmodel.authenticate(token)
+                    if (status == 200) {
+                        Log.d(TAG, "status 200")
+                        binding.root.findNavController()
+                            .navigate(R.id.action_loginFragment_to_mainFragment)
+                    } else if (status == 201) {
+                        Log.d(TAG, "status 201")
+                        binding.root.findNavController()
+                            .navigate(R.id.action_loginFragment_to_userDetailsFragment)
+                        Log.d(TAG, jwtKey)
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to Login Please Try Again Later", Toast.LENGTH_LONG).show()
+                    }
+                    Log.d(TAG, status.toString())
+                }
+            }
             Log.d(TAG, token ?: "No token")
-            println(account.account)
-            updateUI(account)
+//            updateUI(account)
             // Signed in successfully, show authenticated UI.
 
         } catch (e: ApiException) {
             Log.w(TAG, "signInResult:failed code=" + e.statusCode)
-            updateUI(null)
+
         }
     }
 
@@ -100,25 +126,21 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        updateUI(account)
-    }
-
     private fun updateUI(account: GoogleSignInAccount?) {
-        if (account != null) {
-            Log.d("LOGIN","Login completed")
-            Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_mainFragment)
-            // p -- Send request to backend to check if email is valid
-            // create a user if there is none and return the user data
-
-
+        if (jwtKey != "" && account != null) {
+            binding.root.findNavController()
+                .navigate(R.id.action_loginFragment_to_userDetailsFragment)
         }
-        Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_mainFragment)
-
     }
+
+//    override fun onStart() {
+//        super.onStart()
+//
+//        if (jwtKey != ""){
+//            binding.root.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+//        }
+//
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
