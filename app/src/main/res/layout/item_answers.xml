@@ -52,49 +52,49 @@
             android:layout_margin="10dp"
             app:layout_constraintTop_toBottomOf="@id/tvAnswerInQuestionFrag" />
 
-        <TextView
-            android:id="@+id/tvBtnUsefull"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="👍"
-            android:textSize="25sp"
-            android:layout_margin="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tvBtnUsefull"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:clickable="true"-->
+<!--            android:text="👍"-->
+<!--            android:textSize="25sp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"/>-->
 
-        <TextView
-            android:id="@+id/tvUpVote"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            tools:text="10"
-            android:textSize="25sp"
-            android:layout_margin="10dp"
-            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"
-            app:layout_constraintLeft_toRightOf="@id/tvBtnUsefull"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tvUpVote"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:clickable="true"-->
+<!--            tools:text="10"-->
+<!--            android:textSize="25sp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"-->
+<!--            app:layout_constraintLeft_toRightOf="@id/tvBtnUsefull"/>-->
 
-        <TextView
-            android:id="@+id/tvBtnNotUsefull"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="👎"
-            android:textSize="25sp"
-            android:layout_margin="10dp"
-            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"
-            app:layout_constraintLeft_toRightOf="@id/tvUpVote"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tvBtnNotUsefull"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:clickable="true"-->
+<!--            android:text="👎"-->
+<!--            android:textSize="25sp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"-->
+<!--            app:layout_constraintLeft_toRightOf="@id/tvUpVote"/>-->
 
-        <TextView
-            android:id="@+id/tvDownVote"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            tools:text="5"
-            android:textSize="25sp"
-            android:layout_margin="10dp"
-            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"
-            app:layout_constraintLeft_toRightOf="@id/tvBtnNotUsefull"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tvDownVote"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:clickable="true"-->
+<!--            tools:text="5"-->
+<!--            android:textSize="25sp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvUserNameInAns"-->
+<!--            app:layout_constraintLeft_toRightOf="@id/tvBtnNotUsefull"/>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
