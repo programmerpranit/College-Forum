@@ -20,8 +20,8 @@ class AnswerAdapter : ListAdapter<Answer, AnswerAdapter.AnswerViewHolder>(DataCo
 
     inner class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val anstitle:TextView = itemView.findViewById(R.id.tvAnswerInQuestionFrag)
-        val ansupvote:TextView= itemView.findViewById(R.id.tvUpVote)
-        val ansdownvote:TextView= itemView.findViewById(R.id.tvDownVote)
+//        val ansupvote:TextView= itemView.findViewById(R.id.tvUpVote)
+//        val ansdownvote:TextView= itemView.findViewById(R.id.tvDownVote)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswerViewHolder {
@@ -33,8 +33,8 @@ class AnswerAdapter : ListAdapter<Answer, AnswerAdapter.AnswerViewHolder>(DataCo
     override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.anstitle.text = currentItem.answer_text
-        holder.ansupvote.text = currentItem.likes.toString()
-        holder.ansdownvote.text = currentItem.dislikes.toString()
+//        holder.ansupvote.text = currentItem.likes.toString()
+//        holder.ansdownvote.text = currentItem.dislikes.toString()
     }
 
     class DataComparator : DiffUtil.ItemCallback<Answer>() {

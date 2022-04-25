@@ -39,21 +39,28 @@ class AddQuestion : Fragment(R.layout.fragment_add_question) {
         val submitButton = binding.btnAddQuestion
 
         submitButton.setOnClickListener {
+
             val question = binding.etAddQuestion.text.toString()
 
-            lifecycleScope.launch(Dispatchers.Main) {
-                val res = viewmodel.postQuestion(question)
+            if (question != null) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    val res = viewmodel.postQuestion(question)
 
-                if (res) {
-                    view.findNavController().navigate(R.id.action_addQuestion_to_mainFragment)
-                    Toast.makeText(requireContext(), "Question Added Successfully", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireContext(), "Failed to add question", Toast.LENGTH_SHORT).show()
+                    if (res) {
+                        view.findNavController().navigate(R.id.action_addQuestion_to_mainFragment)
+                        Toast.makeText(requireContext(),
+                            "Question Added Successfully",
+                            Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(),
+                            "Failed to add question",
+                            Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                Toast.makeText(requireContext(),"Enter a valid Question",Toast.LENGTH_LONG).show()
             }
-
         }
-
     }
 
 }

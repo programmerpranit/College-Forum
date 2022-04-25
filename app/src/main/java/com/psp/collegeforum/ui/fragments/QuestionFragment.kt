@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.psp.collegeforum.R
 import com.psp.collegeforum.databinding.FragmentQuestionBinding
 import com.psp.collegeforum.ui.adapters.AnswerAdapter
 import com.psp.collegeforum.ui.viewmodels.MainViewModel
@@ -28,7 +27,7 @@ class QuestionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentQuestionBinding.inflate(inflater, container, false)
         return binding.root
@@ -36,7 +35,8 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val jwtkey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTU2NTA5OTk3NDI3MzA3NDQyMTgiLCJleHAiOjE2NTE4NTk1OTIsImlhdCI6MTY0OTI2NzU5Mn0.MmCqNZJ18nR74xQK4Cu-T4iw0dESW4x6ZnkGIlOrvkc"
+        val jwtkey =
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTU2NTA5OTk3NDI3MzA3NDQyMTgiLCJleHAiOjE2NTE4NTk1OTIsImlhdCI6MTY0OTI2NzU5Mn0.MmCqNZJ18nR74xQK4Cu-T4iw0dESW4x6ZnkGIlOrvkc"
         val qid = arguments?.getString("qid").toString().toInt()
         viewmodel.getFullQuestion(qid)
 
@@ -44,31 +44,35 @@ class QuestionFragment : Fragment() {
         val addAnswer = binding.btnAddAnswer
         addAnswer.setOnClickListener {
             val answer = binding.etAddAnswer.text.toString()
-
-            lifecycleScope.launch(Dispatchers.Main) {
-                val res = viewmodel.postAnswer(qid,answer)
-                if (res){
-                    Toast.makeText(requireContext(), "Answer Added Successfully", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(requireContext(), "Answer Not", Toast.LENGTH_SHORT).show()
+            if (answer != null) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    val res = viewmodel.postAnswer(qid, answer)
+                    if (res) {
+                        Toast.makeText(requireContext(),
+                            "Answer Added Successfully",
+                            Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "Answer Not", Toast.LENGTH_SHORT).show()
+                    }
+                    viewmodel.getFullQuestion(qid)
                 }
-                viewmodel.getFullQuestion(qid)
+            } else {
+                Toast.makeText(requireContext(),
+                    "Add a valid Answer",
+                    Toast.LENGTH_SHORT).show()
             }
 
+            viewmodel.fullquestion.observe(viewLifecycleOwner) { fullQuestion ->
+                adapter.submitList(fullQuestion.answers)
+                binding.tvQuestionInQuestionFrag.text = fullQuestion.question.question_text
+            }
+
+            val recyclerView = binding.rvInQuestionFrag
+            recyclerView.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            recyclerView.adapter = adapter
         }
 
-        viewmodel.fullquestion.observe(viewLifecycleOwner) { fullQuestion ->
-            adapter.submitList(fullQuestion.answers)
-            binding.tvQuestionInQuestionFrag.text = fullQuestion.question.question_text
-        }
 
-        val recyclerView = binding.rvInQuestionFrag
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = adapter
     }
-
-
-
-
-
 }
