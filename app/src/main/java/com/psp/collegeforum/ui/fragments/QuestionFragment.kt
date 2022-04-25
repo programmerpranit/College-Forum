@@ -35,33 +35,39 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val jwtkey =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTU2NTA5OTk3NDI3MzA3NDQyMTgiLCJleHAiOjE2NTE4NTk1OTIsImlhdCI6MTY0OTI2NzU5Mn0.MmCqNZJ18nR74xQK4Cu-T4iw0dESW4x6ZnkGIlOrvkc"
+
         val qid = arguments?.getString("qid").toString().toInt()
+
         viewmodel.getFullQuestion(qid)
 
         adapter = AnswerAdapter()
         val addAnswer = binding.btnAddAnswer
+
         addAnswer.setOnClickListener {
             val answer = binding.etAddAnswer.text.toString()
-            if (answer != null) {
+
+            if (answer.isNotBlank() && answer.isNotEmpty()) {
                 lifecycleScope.launch(Dispatchers.Main) {
                     val res = viewmodel.postAnswer(qid, answer)
                     if (res) {
-                        Toast.makeText(requireContext(),
+                        Toast.makeText(
+                            requireContext(),
                             "Answer Added Successfully",
-                            Toast.LENGTH_SHORT).show()
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         Toast.makeText(requireContext(), "Answer Not", Toast.LENGTH_SHORT).show()
                     }
                     viewmodel.getFullQuestion(qid)
                 }
             } else {
-                Toast.makeText(requireContext(),
+                Toast.makeText(
+                    requireContext(),
                     "Add a valid Answer",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
+        }
             viewmodel.fullquestion.observe(viewLifecycleOwner) { fullQuestion ->
                 adapter.submitList(fullQuestion.answers)
                 binding.tvQuestionInQuestionFrag.text = fullQuestion.question.question_text
@@ -71,7 +77,7 @@ class QuestionFragment : Fragment() {
             recyclerView.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             recyclerView.adapter = adapter
-        }
+
 
 
     }

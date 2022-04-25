@@ -44,18 +44,27 @@ class AuthViewModels @Inject constructor(
         return status
     }
 
-    suspend fun editUser(name: String, prn: Int, yos:Int, jwtkey:String):Boolean {
-        var status = 1000
-        Log.d("JWT KEY", jwtkey)
-        Log.d("Edit User", jwt)
-        val job = viewModelScope.async {
-            val req = repository.postUser(name, prn, yos, jwt)
-            status = req.status ?: 1000
-        }
-        job.await()
+//    suspend fun editUser(name: String, prn: Int, yos:Int, jwtkey:String?):Boolean {
+//        var status = 1000
+//        Log.d("JWT KEY", jwtkey ?: "no key")
+//        Log.d("Edit User", jwt)
+//
+//        val key = if(jwtkey != "" || jwtkey != null){
+//            jwtkey
+//        } else {
+//            jwt
+//        }
+//
+//        val job = viewModelScope.async {
+//            val req = repository.postUser(name, prn, yos, key)
+//            status = req.status ?: 1000
+//        }
+//        job.await()
+//
+//        return (job.isCompleted && status==201)
+//    }
 
-        return (job.isCompleted && status==201)
-    }
+
 
 
 

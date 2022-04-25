@@ -6,5 +6,5 @@ data class Answer(
     val dislikes: Int,
     val likes: Int,
     val timestamp: String,
-    val owner: Owner
+    val user: User
 )

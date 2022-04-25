@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task
 import com.psp.collegeforum.R
 import com.psp.collegeforum.databinding.FragmentLoginBinding
 import com.psp.collegeforum.ui.viewmodels.AuthViewModels
+import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +29,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
-    private val viewmodel: AuthViewModels by activityViewModels()
+    private val viewmodel: MainViewModel by activityViewModels()
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -40,13 +41,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val clientId =
         "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
 
-    //    @Inject
-//    @Named("jwtkey")
     @Inject
     lateinit var jwtKey: String
 
 
-//    val jwtKey = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -92,8 +90,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             val token = account.idToken
+            val email = account.email
 
-            if (token != null) {
+            if (token != null && email?.endsWith("@acpce.ac.in") == true) {
                 lifecycleScope.launch(Dispatchers.Main) {
                     val status = viewmodel.authenticate(token)
                     if (status == 200) {
@@ -111,6 +110,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     Log.d(TAG, status.toString())
                 }
             }
+            else {
+                Toast.makeText(requireContext(), "Login With ACPCE Email" , Toast.LENGTH_SHORT).show()
+            }
             Log.d(TAG, token ?: "No token")
 //            updateUI(account)
             // Signed in successfully, show authenticated UI.
@@ -126,12 +128,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    private fun updateUI(account: GoogleSignInAccount?) {
-        if (jwtKey != "" && account != null) {
-            binding.root.findNavController()
-                .navigate(R.id.action_loginFragment_to_userDetailsFragment)
-        }
-    }
+//    private fun updateUI(account: GoogleSignInAccount?) {
+//        if (jwtKey != "" && account != null) {
+//            binding.root.findNavController()
+//                .navigate(R.id.action_loginFragment_to_userDetailsFragment)
+//        }
+//    }
 
 //    override fun onStart() {
 //        super.onStart()

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +14,7 @@ import androidx.navigation.findNavController
 import com.psp.collegeforum.R
 import com.psp.collegeforum.databinding.FragmentUserDetailsBinding
 import com.psp.collegeforum.ui.viewmodels.AuthViewModels
+import com.psp.collegeforum.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -26,7 +28,7 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
 
     private var _binding: FragmentUserDetailsBinding? = null
     private val binding get() = _binding!!
-    private val viewmodel: AuthViewModels by activityViewModels()
+    private val viewmodel: MainViewModel by activityViewModels()
 
     @Inject
     lateinit var jwtkey:String
@@ -58,7 +60,7 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
             lifecycleScope.launch(Dispatchers.Main) {
                 val key = getJWT()
                 Log.d("Key in UDF from get key", key)
-                val res = viewmodel.editUser(username, prn, yearOfStudy, key)
+                val res = viewmodel.editUser(username, prn, yearOfStudy)
 
                 if (res) {
                     view.findNavController().navigate(R.id.action_userDetailsFragment_to_mainFragment)
@@ -73,7 +75,7 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
 
     }
 
-    suspend fun getJWT(): String{
+    fun getJWT(): String{
         return jwtkey
     }
 

@@ -20,7 +20,9 @@ class AnswerAdapter : ListAdapter<Answer, AnswerAdapter.AnswerViewHolder>(DataCo
 
     inner class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val anstitle:TextView = itemView.findViewById(R.id.tvAnswerInQuestionFrag)
-//        val ansupvote:TextView= itemView.findViewById(R.id.tvUpVote)
+        val username:TextView = itemView.findViewById(R.id.tvUserNameInAns)
+        val timestamp:TextView = itemView.findViewById(R.id.tvTimeInAns)
+    //        val ansupvote:TextView= itemView.findViewById(R.id.tvUpVote)
 //        val ansdownvote:TextView= itemView.findViewById(R.id.tvDownVote)
     }
 
@@ -33,6 +35,8 @@ class AnswerAdapter : ListAdapter<Answer, AnswerAdapter.AnswerViewHolder>(DataCo
     override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.anstitle.text = currentItem.answer_text
+        holder.username.text = currentItem.user.name
+        holder.timestamp.text = currentItem.timestamp.slice(0..9)
 //        holder.ansupvote.text = currentItem.likes.toString()
 //        holder.ansdownvote.text = currentItem.dislikes.toString()
     }

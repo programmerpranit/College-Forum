@@ -42,7 +42,7 @@ class AddQuestion : Fragment(R.layout.fragment_add_question) {
 
             val question = binding.etAddQuestion.text.toString()
 
-            if (question != null) {
+            if (question.isNotBlank() && question.isNotEmpty()) {
                 lifecycleScope.launch(Dispatchers.Main) {
                     val res = viewmodel.postQuestion(question)
 
