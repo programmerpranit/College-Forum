@@ -1,5 +1,6 @@
 package com.psp.collegeforum.data.repositories
 
+import android.util.Log
 import com.psp.collegeforum.data.BackendApi
 import com.psp.collegeforum.data.models.*
 import com.psp.collegeforum.util.Resource
@@ -10,6 +11,8 @@ import javax.inject.Named
 class MainRepo @Inject constructor(
     private val api: BackendApi
 ) {
+
+    val TAG = "REPO"
 
 //    val jwtkey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTU2NTA5OTk3NDI3MzA3NDQyMTgiLCJleHAiOjE2NTE4NTk1OTIsImlhdCI6MTY0OTI2NzU5Mn0.MmCqNZJ18nR74xQK4Cu-T4iw0dESW4x6ZnkGIlOrvkc"
 
@@ -31,6 +34,23 @@ class MainRepo @Inject constructor(
     suspend fun getFullQuestion(qid:Int): Resource<FullQuestion> {
         return try {
             val res = api.getFullQuestion(qid)
+            val result = res.body()
+            val status = res.code()
+            if(res.isSuccessful && result != null) {
+                Resource.Success(result, status)
+            } else {
+                Resource.Error(res.message())
+            }
+
+        } catch (e: Exception){
+            Resource.Error(e.localizedMessage ?: "Unknown Error occurred")
+        }
+    }
+
+    suspend fun searchQuestion(q:String): Resource<ArrayList<Question>> {
+        return try {
+            val res = api.searchQuestion(q)
+
             val result = res.body()
             val status = res.code()
             if(res.isSuccessful && result != null) {

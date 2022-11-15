@@ -34,6 +34,9 @@ class MainViewModel @Inject constructor(
     private var _questions = MutableLiveData<ArrayList<Question>>()
     val question: LiveData<ArrayList<Question>> = _questions
 
+    private var _searchedQuestions = MutableLiveData<ArrayList<Question>>()
+    val searchedQuestion: LiveData<ArrayList<Question>> = _searchedQuestions
+
     private var _fullquestion = MutableLiveData<FullQuestion>()
     val fullquestion: LiveData<FullQuestion> = _fullquestion
 
@@ -56,6 +59,17 @@ class MainViewModel @Inject constructor(
             if (fullQuestion.status == 200) {
                 withContext(Dispatchers.Main) {
                     _fullquestion.value = fullQuestion.data!!
+                }
+            }
+        }
+    }
+    //Function to search questions
+    fun searchQuestions(q: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val questions = repository.searchQuestion(q)
+            if (questions.status == 200) {
+                withContext(Dispatchers.Main) {
+                    _searchedQuestions.value = questions.data!!
                 }
             }
         }

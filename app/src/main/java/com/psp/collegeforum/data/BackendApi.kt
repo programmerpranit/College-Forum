@@ -10,9 +10,11 @@ interface BackendApi {
     @GET("/forum/questions")
     suspend fun getQuestions(): Response<ArrayList<Question>>
 
-
     @GET("/forum/fullquestion")
     suspend fun getFullQuestion(@Query("qid") qid: Int): Response<FullQuestion>
+
+    @GET("/forum/search")
+    suspend fun searchQuestion(@Query("q") q: String): Response<ArrayList<Question>>
 
     @FormUrlEncoded
     @POST("/forum/addquestion")

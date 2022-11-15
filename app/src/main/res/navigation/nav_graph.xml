@@ -61,7 +61,11 @@
         android:id="@+id/searchFragment"
         android:name="com.psp.collegeforum.ui.fragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.psp.collegeforum.ui.fragments.UserDetailsFragment"

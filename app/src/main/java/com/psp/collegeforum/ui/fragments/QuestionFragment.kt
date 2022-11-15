@@ -77,8 +77,5 @@ class QuestionFragment : Fragment() {
             recyclerView.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             recyclerView.adapter = adapter
-
-
-
     }
 }

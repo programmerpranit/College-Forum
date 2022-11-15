@@ -55,6 +55,7 @@ class MainFragment : Fragment(), QuestionsAdapter.QueClicked {
                 .navigate(R.id.action_mainFragment_to_userProfileFragment)
         }
 
+
         viewmodel.getQuestions()
         adapter = QuestionsAdapter(this)
 

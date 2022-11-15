@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.Keep
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -38,13 +39,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val TAG = "LoginActivity"
     private val RC_SIGN_IN = 11
 
+    @Keep
     private val clientId =
         "855467182800-lb0n7pki7mb37j884nquqlrhgi08s4uu.apps.googleusercontent.com"
 
     @Inject
     lateinit var jwtKey: String
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -111,7 +111,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
             }
             else {
-                Toast.makeText(requireContext(), "Login With ACPCE Email" , Toast.LENGTH_SHORT).show()
+                mGoogleSignInClient.signOut().addOnCompleteListener{
+                    Toast.makeText(requireContext(), "Login With ACPCE Email" , Toast.LENGTH_SHORT).show()
+                }
             }
             Log.d(TAG, token ?: "No token")
 //            updateUI(account)
